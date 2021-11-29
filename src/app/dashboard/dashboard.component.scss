@@ -1,0 +1,55 @@
+
+.content-area {
+    background-image: url("../../assets/wood.jpg");
+    background-repeat: repeat;
+    width: 92%;
+    margin: 2%;
+    height: fit-content;
+    border-radius: 2rem;
+    min-height: 500px;
+    display: flex;
+    padding: 2%;
+    justify-content: left;
+    align-content: left;
+    flex-wrap: wrap;
+    box-shadow: 5px 5px 15px -3px #000000;
+
+}
+
+.instructions-panel {
+    width: 92%;
+    margin: 2%;
+    padding: 2%;
+    border: solid 1px black;
+    background-color: lightgrey;
+
+}
+
+.new-cat-button {
+    font-family: "Montserrat", sans-serif;
+    border-color: black;
+    border-width: 1px;
+    color: white;
+    font-size: 100px;
+    text-align: center;
+    text-justify: center;
+    text-shadow: 2px 2px #ff0000;
+    background: linear-gradient(90deg, rgba(103,189,162,1) 0%, rgba(41,213,146,1) 55%, rgba(53,157,80,1) 100%);
+    margin: 10px;
+    min-height: 200px;
+    max-height: 200px;
+    min-width: 200px;
+    max-width: 200px;
+    overflow: scroll;
+    border-radius: 50%;
+    box-shadow: 5px 5px 15px -3px #000000;
+
+    &:active {
+        text-shadow: none;
+        box-shadow: 3px 3px 10px -1px #000000;
+        transform: scale(0.98);
+    }
+
+       
+}
+

@@ -1,0 +1,46 @@
+<mat-expansion-panel
+  class="instructions-panel"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title>Instructions</mat-panel-title>
+  </mat-expansion-panel-header>
+  <p>In YAPRA, the dashboard view is your "stickies" view. Each sticky on the
+    dashboard corresponds to a category of your life and contains associated
+    tasks and notes. For example, right now my categories looks like this:
+  </p>
+  <ul>
+    <li>Coding Projects</li>
+    <li>Job Search</li>
+    <li>Music</li>
+    <li>Errands</li>
+    <li>Health / Fitness</li>
+    <li>Other</li>
+  </ul>
+  <p>
+    But yours could look totally different; when I was in school I had a category
+    for every course. The idea is to divide up your life in a way that is logical 
+    to you.
+  </p>
+  <h2>Get Started</h2>
+  <p>Press the big green button to create a new category and a corresponding sticky note</p>
+  <p>You can now: </p>
+  <ul>
+    <li>Edit the category's name and color</li>
+    <li>Add and edit tasks</li>
+    <li>Write down relevant notes</li>
+  </ul>
+  <p>
+    Once you've created some categories and added some tasks, proceed to
+    the calendar. Whatever tasks you add to the stickies on your dashboard 
+    will be reflected on the calendar.
+  </p>
+</mat-expansion-panel>
+<div class="content-area">
+  <app-category-card
+    *ngFor="let cat of categoryStore.categories$ | async"
+    [category]="cat"
+  ></app-category-card>
+  <button class="new-cat-button" (click)="categoryStore.newCategory()">
+    +
+  </button>
+</div>

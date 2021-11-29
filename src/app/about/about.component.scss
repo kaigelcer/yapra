@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.content-area {
+    background-image: url("../../assets/wood.jpg");
+    background-repeat: repeat;
+    width: 92%;
+    margin: 2%;
+    height: fit-content;
+    border-radius: 2rem;
+    min-height: 500px;
+    display: flex;
+    padding: 2%;
+    justify-content: left;
+    align-content: left;
+    flex-wrap: wrap;
+    box-shadow: 5px 5px 15px -3px #000000;
+
+}
+
+
+.about-body {
+
+    background: whitesmoke;
+    font-family: 'Lato', sans-serif;
+    color: #1f1f1f;
+    padding: 10px;
+    
+    background-color: whitesmoke;
+    margin: 10px;
+    box-shadow: 5px 5px 15px -3px #000000;
+
+
+}

@@ -1,0 +1,163 @@
+@mixin sticky-inputs {
+  font-family: "Montserrat", sans-serif;
+  background-color: rgb(255, 237, 101);
+  border: none;
+  border-bottom: solid black 1px;
+  margin-bottom: 20px;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+
+
+
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  input {
+    @include sticky-inputs();
+    margin-top: 10px;
+    margin-right: 20px;
+    max-width: 200px;
+    text-overflow: ellipsis;
+    font-size: x-large;
+    border-bottom: none;
+    font-weight: bold;
+    margin-bottom: 0;
+
+    &::placeholder {
+      color: darkslategray;
+    }
+  }
+
+
+
+}
+
+.name {
+  font-size: medium;
+}
+
+.card {
+  font-family: "Montserrat", sans-serif;
+  background-color: rgb(255, 237, 101);
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 200px;
+  max-height: 200px;
+  min-width: 250px;
+  max-width: 250px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  box-shadow: 5px 5px 15px -3px #000000;
+  ::-webkit-scrollbar {
+    display: inline !important;
+  }
+}
+
+.task {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: rgb(255, 237, 101);
+  border-radius: 1%;
+  border-color: #1f1f1f;
+  border-width: 1px;
+  border-style: solid;
+  margin: 10px 0px;
+  text-indent: 0;
+  padding: 5% 5%;
+
+  .info-input {
+    @include sticky-inputs();
+
+    max-width: 180px;
+    text-overflow: ellipsis;
+
+   
+  }
+
+  .date-input {
+    @include sticky-inputs();
+    max-width: 150px;
+    margin-right: 3px;
+  }
+
+  .completed-btn {
+    background-color: lightgreen;
+    width: 100%;
+  }
+
+  .cal-btn {
+    display: flex;
+    height: 23px;
+    width: 26px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  label {
+    margin-right: 3px;
+  }
+}
+
+.notes {
+  font-family: 'Montserrat', sans-serif;
+  min-width: 230px;
+  max-width: 230px;
+  border: none;
+  resize: none;
+  margin-bottom: 20px;
+  &::placeholder {
+    color: darkslategray;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+
+.new-task-btn {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 50px;
+  max-height: 50px;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+.picker {
+  margin-top: 10px;
+  margin-left: 0;
+  margin-right: 0;
+
+}
+
+.close-btn {
+  min-width: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  max-height: 20px;
+  margin-top: 10px;
+  padding: 0;
+  display: none;
+}
+
+.delete-btn {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 50px;
+  max-height: 50px;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 10px;
+
+}

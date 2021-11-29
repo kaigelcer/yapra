@@ -1,0 +1,11 @@
+<div class="color-picker" *ngIf="show == false">
+  <div (click)="toggleColors()" class="square icon"></div>
+</div>
+  <div class="colors" *ngIf="show">
+    <div
+      (click)="changeColor(paint)"
+      *ngFor="let paint of defaultColors"
+      class="square"
+      [ngStyle]="{ background: paint }"
+    ></div>
+  </div>

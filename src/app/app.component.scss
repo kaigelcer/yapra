@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Zen+Kurenaido&display=swap");
+
+@mixin flex-center {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.banner {
+    @include flex-center();
+    background-color: rgb(115, 100, 138);
+    margin: 0;
+
+    h1 {
+        color: whitesmoke;
+        font-family: "Montserrat", sans-serif;
+        text-align: center
+    }
+}
+
+.nav-bar {
+    @include flex-center();
+    background-color: rgb(152, 130, 172);
+
+    a {
+        margin: 10px 10px;
+        font-family: "Montserrat", sans-serif;
+        color: whitesmoke;
+        &:active {
+            color: lightblue;
+        }
+    }
+}

@@ -1,0 +1,106 @@
+<ng-template #customCellTemplate let-day="day" let-locale="locale">
+  <div class="cal-cell-top">
+    <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{
+      day.badgeTotal
+    }}</span>
+    <span class="cal-day-number">{{
+      day.date | calendarDate: "monthViewDayNumber":locale
+    }}</span>
+  </div>
+  <div
+    class="cal-event"
+    *ngFor="let event of day.events"
+    [ngStyle]="{ backgroundColor: event.color?.primary }"
+    [ngClass]="event?.cssClass"
+    [mwlCalendarTooltip]="
+      event.title | calendarEventTitle: 'monthTooltip':event
+    "
+    [tooltipEvent]="event"
+    mwlDraggable
+    [class.cal-draggable]="event.draggable"
+    dragActiveClass="cal-drag-active"
+    [dropData]="{ event: event, draggedFrom: day }"
+    [dragAxis]="{ x: event.draggable, y: event.draggable }"
+    [touchStartLongPress]="{ delay: 300, delta: 30 }"
+    [attr.aria-hidden]="{} | calendarA11y: 'hideMonthCellEvents'"
+  >
+    <input
+      [ngStyle]="{ backgroundColor: event.color.primary }"
+      #info
+      class="task-input"
+      value="{{ event.title }}"
+      (change)="categoryStore.updateTask(event.meta, event.id, info.value, '')"
+    />
+  </div>
+</ng-template>
+<mat-expansion-panel class="instructions-panel">
+  <mat-expansion-panel-header>
+    <mat-panel-title>Instructions</mat-panel-title>
+  </mat-expansion-panel-header>
+  <p>
+    Any tasks that you add (with a valid date) on your dashboard will be shown
+    on the calendar. Note that tasks are color-coded by category. You can edit
+    task info by clicking on a task. You can also drag a task to a different
+    date. Both of these changes will be reflected on your dashboard. I am still
+    working on functionality for removing tasks and adding new tasks from the
+    calendar view.
+  </p>
+</mat-expansion-panel>
+<div class="desk">
+  <div [ngSwitch]="view" class="calendar-container">
+    <div class="header">
+      <div class="btn-group">
+        <button
+          class="btn"
+          mwlCalendarPreviousView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+          Previous
+        </button>
+        <button class="btn" mwlCalendarToday [(viewDate)]="viewDate">
+          Today
+        </button>
+        <button
+          class="btn"
+          mwlCalendarNextView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+    <div class="header">
+      <h3>{{ viewDate | calendarDate: view + "ViewTitle":"en" }}</h3>
+    </div>
+    <mwl-calendar-month-view
+      class="month-view"
+      *ngSwitchCase="'month'"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      [cellTemplate]="customCellTemplate"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view
+      *ngSwitchCase="'week'"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view
+      *ngSwitchCase="'day'"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-day-view>
+  </div>
+</div>
