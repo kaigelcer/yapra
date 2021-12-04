@@ -23,13 +23,15 @@ export class CalendarComponent implements OnInit {
   activeDayIsOpen: boolean = true;
 
   view: CalendarView = CalendarView.Month;
-
+  events: CalendarEvent[] = [];
   viewDate: Date = new Date();
   refresh: Subject<any> = new Subject();
 
-  constructor(public categoryStore: CategoryStoreService) {}
+  constructor(public categoryStore: CategoryStoreService) {
+    
+  }
 
-  events: CalendarEvent[] = [];
+  
 
   getEvents() {
     this.categoryStore.categories.forEach((category) => {
@@ -56,9 +58,12 @@ export class CalendarComponent implements OnInit {
   }
 
   removeEvent(event: CalendarEvent) {
-    this.categoryStore.removeTask(event.meta, String(event.id));
-    this.events.filter(element => {element.id !== event.id});
-    this.refresh.next(null);
+    this.categoryStore.removeTask(event.meta, event.id);
+    console.log(event.id);
+    this.events = this.events.filter(element => 
+      element.id != event.id
+    )
+    
   }
 
   eventTimesChanged({
@@ -78,6 +83,25 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getEvents();
+    this.categoryStore.categories$.subscribe((categories) => {
+      categories.forEach((category) => {
+        if (category.tasks.length) {
+          category.tasks.forEach((task) => {
+            this.events.push({
+              meta: category.id,
+              id: task.id,
+              title: task.info,
+              color: {
+                primary: category.color,
+                secondary: category.color,
+              },
+              start: task.date,
+              draggable: true,
+            });
+          });
+        }
+      });
+    });
+
   }
 }

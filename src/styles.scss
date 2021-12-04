@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Zen+Kurenaido&display=swap");
 
+
+// General Formatting
 html {
   padding: 0;
   margin: 0;
@@ -8,6 +10,20 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 
+body {
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+// Global Custom Styles
+
+
+// NG Bootstrap styles
 ngb-datepicker {
   position: absolute;
   background-color: white;
@@ -20,16 +36,6 @@ ngb-datepicker {
     background-color: rgba(52, 104, 191, 1);
     color: white;
   }
-}
-
-body {
-  padding: 0;
-  margin: 0;
-  max-width: 100%;
-}
-
-a {
-  text-decoration: none;
 }
 
 // CALENDAR STYLES

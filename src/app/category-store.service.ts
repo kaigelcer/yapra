@@ -61,7 +61,7 @@ export class CategoryStoreService {
     });
   }
 
-  removeTask(categoryId: string, taskId: string) {
+  removeTask(categoryId: string, taskId: any) {
     this.categories.forEach((category) => {
       if (category.id == categoryId) {
          category.tasks = category.tasks.filter((task) => task.id !== taskId);

@@ -1,3 +1,18 @@
+
+@mixin iconButton($width, $height) {
+
+  min-width: $width;
+  max-width: $width;
+  min-height: $height;
+  max-height: $height;
+  padding: 0;
+  
+}
+
+.completed-btn {
+  @include iconButton(20%, 20px);
+}
+
 .btn-group {
   display: inline-block;
   margin-top: 10px;
@@ -57,7 +72,7 @@
 .task-input {
   font-family: "Montserrat", sans-serif;
   border: none;
-  max-width: 80px;
+  max-width: 60%;
   text-overflow: ellipsis;
 
   &:focus {

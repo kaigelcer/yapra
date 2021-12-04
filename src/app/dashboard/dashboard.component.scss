@@ -43,12 +43,19 @@
     overflow: scroll;
     border-radius: 50%;
     box-shadow: 5px 5px 15px -3px #000000;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     &:active {
         text-shadow: none;
         box-shadow: 3px 3px 10px -1px #000000;
         transform: scale(0.98);
     }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
 
        
 }
